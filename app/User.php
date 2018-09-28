@@ -27,4 +27,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class, 'movie_user')
+                    ->orderby('release_year', 'desc');
+    }
 }
