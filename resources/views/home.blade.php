@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h3>Movies</h3>
+                    <ul>
+                        @foreach($movies as $movie)
+                            <li>
+                                {{ $movie->title }}, released in {{ $movie->release_year }} ({{ date('Y') - $movie->release_year }} years ago)
+                            </li>
+                        @endforeach
+                    </ul>
+
                 </div>
             </div>
         </div>
