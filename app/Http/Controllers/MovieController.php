@@ -12,7 +12,10 @@ class MovieController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        $movies = $user->movies->take(5);
+        if (!$user) {
+            return redirect('login');;
+        }
+        $movies = $user->movies->sortByDesc('release_year')->take(5);
 
         return view('home',compact('movies'));
     }
